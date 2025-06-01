@@ -1,23 +1,23 @@
-import React from "react";
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 
-function Home() {
-    return <h1>Home Page</h1>
-}
+import theme from './themes/theme';
 
-function About() {
-    return <h1>About Page</h1>
-}
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
     return(
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-            </Routes>
-        </BrowserRouter>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                </Routes>
+            </BrowserRouter>
+        </ThemeProvider>
     );
 }
 
