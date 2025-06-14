@@ -66,7 +66,7 @@ function AppLayout({ children }) {
                         alignItems: "center",
                         justifyContent: "center",
                         minHeight: 0,
-                        marginLeft: "100px", // space for nav
+                        marginLeft: "100px",
                     }}
                 >
                     {children}
@@ -77,7 +77,7 @@ function AppLayout({ children }) {
             <Footer sx={{ flexShrink: 0 }}>
                 <span>
                     <b>Contacts:</b>
-                    <a href="#"><img src={githubIcon} alt="Github" /></a>
+                    <a href="https://github.com/AcelyonYT"><img src={githubIcon} alt="Github" /></a>
                     <a href="#"><img src={linkedinIcon} alt="Linkedin" /></a>
                 </span>
                 <span>

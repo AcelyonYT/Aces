@@ -3,6 +3,8 @@ import { Box, Typography, CardContent, Card, Button, Grid, Avatar } from "@mui/m
 
 import { MainContent, SectionCard } from "../themes/mainStyle";
 
+import pfp from "../assets/images/aceOfSpadesPFP.jpg";
+
 // Highlighted skills (icons can be added later)
 const skills = [
     { name: "Frontend" },
@@ -13,7 +15,7 @@ const skills = [
 
 // Example projects (replace with real data/images)
 const projects = [
-    { title: "Project One", desc: "A cool project about X.", img: "" },
+    { title: "Personal Website", desc: "A website to display my skills and to personally play around with.", img: pfp },
     { title: "Project Two", desc: "Another awesome project.", img: "" },
     { title: "Project Three", desc: "Yet another project.", img: "" }
 ];
@@ -53,23 +55,66 @@ function Home() {
                 </CardContent>
             </SectionCard>
             {/* Projects */}
-            <SectionCard sx={{ gridArea: "projects", minWidth: 320, maxWidth: 500 }}>
+            <SectionCard sx={{ gridArea: "projects", minWidth: 320, width: "fit-content" }}>
                 <CardContent>
                     <Typography variant="h5" gutterBottom>Featured Projects</Typography>
-                    <Grid container spacing={2}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            gap: 2,
+                            height: 180, // Fixed height for the project area
+                            alignItems: "flex-start",
+                            mb: 2,
+                        }}
+                    >
                         {projects.map((proj) => (
-                            <Grid item xs={4} key={proj.title}>
-                                <Card sx={{ background: "transparent", boxShadow: "none" }}>
-                                    <Box sx={{ height: 80, mb: 1, bgcolor: "grey.900", borderRadius: 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                        {/* Replace with <img src={proj.img} ... /> when available */}
+                            <Card
+                                key={proj.title}
+                                sx={{
+                                    background: "transparent",
+                                    boxShadow: "none",
+                                    minWidth: 140,
+                                    maxWidth: 180,
+                                    flex: "0 0 auto",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    height: "100%",
+                                }}
+                            >
+                                <Box sx={{
+                                    height: 80,
+                                    width: 80,
+                                    mb: 1,
+                                    bgcolor: "grey.900",
+                                    borderRadius: 2,
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    overflow: "hidden",
+                                }}>
+                                    {proj.img ? (
+                                        <img
+                                            src={proj.img}
+                                            alt="📦"
+                                            style={{
+                                                width: 150,
+                                                height: 150,
+                                                objectFit: "contain",
+                                                display: "block",
+                                            }}
+                                        />
+                                    ) : (
                                         <Typography variant="h3" color="grey.700">📦</Typography>
-                                    </Box>
-                                    <Typography variant="subtitle1" fontWeight="bold">{proj.title}</Typography>
-                                    <Typography variant="body2">{proj.desc}</Typography>
-                                </Card>
-                            </Grid>
+                                    )}
+                                </Box>
+                                <Typography variant="subtitle1" fontWeight="bold" align="center">{proj.title}</Typography>
+                                <Typography variant="body2" align="center">{proj.desc}</Typography>
+                                <p style={{ margin: 0 }}><a href="https://github.com/AcelyonYT/Aces">Github Repo</a></p>
+                            </Card>
                         ))}
-                    </Grid>
+                    </Box>
                     <Button variant="contained" color="secondary" sx={{ mt: 2 }} onClick={() => navigate("/projects")}>
                         See More Projects
                     </Button>

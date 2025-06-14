@@ -10,7 +10,6 @@ export const MainContent = styled(Box)(({ theme }) => ({
         "projects projects projects"
     `,
     gap: theme.spacing(3),
-    padding: theme.spacing(3, 3, 3, 3),
     maxWidth: 1200,
     // Move main content further left and add top/bottom gap for header/footer
     margin: "0 0 60px 60px",
